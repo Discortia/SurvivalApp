@@ -46,6 +46,9 @@ function randomoiVastaukset(vastaus1,vastaus2,vastaus3) {
 }
 function naytaKysymys()  {
 
+localStorage.setItem('pisteet',0);
+localStorage.setItem('laskuri',0);
+
  var kysymystaulukko = new Array();
  //lisätään kaikki kysymykset taulukkoon
  kysymystaulukko[0] = document.getElementById("s0");
@@ -89,15 +92,28 @@ function naytaKysymys()  {
  //lisätään kentta-näkymä html body-tagiin
  naytto.appendChild(kentta);
  
- var pisteet = 0;
- var kierros = 0;
- vastaus1.onclick = function() {location.reload()};
- vastaus2.onclick = function() {location.reload()};
- vastaus3.onclick = function() {location.reload()};
+  document.body = naytto;
  
- 
- document.body = naytto;
-
+ vastaus1.onclick = function() {vastaus('vastaus1')};
+ vastaus2.onclick = function() {vastaus('vastaus2')};
+ vastaus3.onclick = function() {vastaus('vastaus3')};
  
  }
  
+ function vastaus(vaihtoehto)
+ { 
+	var oikea = 'vastaus3';
+	
+	if (vaihtoehto == oikea)
+	{
+		alert('Oikea vastaus!');
+		location.reload();
+	}
+	
+	else
+	{
+		location.reload();
+	}
+	 
+	 
+ }
