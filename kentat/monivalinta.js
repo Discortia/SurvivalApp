@@ -48,20 +48,6 @@ function naytaKysymys()  {
 
 localStorage.setItem('pisteet',0);
 localStorage.setItem('laskuri',0);
-
- var kysymystaulukko = new Array();
- //lisätään kaikki kysymykset taulukkoon
- kysymystaulukko[0] = document.getElementById("s0");
- kysymystaulukko[1] = document.getElementById("s1");
- kysymystaulukko[2] = document.getElementById("s2");
- kysymystaulukko[3] = document.getElementById("s3");
- kysymystaulukko[4] = document.getElementById("s4");
- kysymystaulukko[5] = document.getElementById("s5");
- kysymystaulukko[6] = document.getElementById("s6");
- kysymystaulukko[7] = document.getElementById("s7");
- kysymystaulukko[8] = document.getElementById("s8");
- kysymystaulukko[9] = document.getElementById("s9");
- kysymystaulukko[10] = document.getElementById("s10");
  
  //luodaan näyttöä varten yhden kysymyksen html-rakenne
  var naytto = document.createElement("body");
@@ -72,13 +58,15 @@ localStorage.setItem('laskuri',0);
  var vastaus3 = document.createElement("div");
   
  //kysymysjärjestyksen randomisointi 
- var luku = Math.floor((Math.random() * 9) + 1);
+ var luvut = satunnaisLuvut();
+ 
+ var kysymys = kysymysData(luvut[0]);
   
  //sijoitetaan kysymyksen sisältö html-rakenteeseen, kysymysnumero satunnainen 
-  otsikko.innerHTML = kysymystaulukko[luku].childNodes[1].innerHTML;
-  vastaus1.innerHTML = kysymystaulukko[luku].childNodes[3].innerHTML;
-  vastaus2.innerHTML = kysymystaulukko[luku].childNodes[5].innerHTML;
-  vastaus3.innerHTML = kysymystaulukko[luku].childNodes[7].innerHTML;
+  otsikko.innerHTML = kysymys[0];
+  vastaus1.innerHTML = kysymys[1];
+  vastaus2.innerHTML = kysymys[2];
+  vastaus3.innerHTML = kysymys[3];
  
  //vastausjärjestyksen randomisointi
  vastaustaulukko = randomoiVastaukset(vastaus1,vastaus2,vastaus3);
@@ -106,14 +94,71 @@ localStorage.setItem('laskuri',0);
 	
 	if (vaihtoehto == oikea)
 	{
-		alert('Oikea vastaus!');
+		pisteet = parseInt(localStorage.getItem('pisteet')) + 1;
+		localStorage.setItem('pisteet',pisteet);
+		laskuri = parseInt(localStorage.getItem('laskuri')) + 1;
+		localStorage.setItem('laskuri', laskuri);
+		alert('Oikea vastaus! ' + pisteet);
 		location.reload();
 	}
 	
 	else
-	{
+	{   laskuri = parseInt(localStorage.getItem('laskuri')) + 1;
+		localStorage.setItem('laskuri', laskuri);
 		location.reload();
 	}
 	 
+	 
+ }
+ 
+ function kysymysData(luku)
+ {
+		var kysymystaulukko = new Array();
+		//lisätään kaikki kysymykset taulukkoon
+	kysymystaulukko[0] = document.getElementById("s0");
+	kysymystaulukko[1] = document.getElementById("s1");
+	kysymystaulukko[2] = document.getElementById("s2");
+	kysymystaulukko[3] = document.getElementById("s3");
+	kysymystaulukko[4] = document.getElementById("s4");
+	kysymystaulukko[5] = document.getElementById("s5");
+	kysymystaulukko[6] = document.getElementById("s6");
+	kysymystaulukko[7] = document.getElementById("s7");
+	kysymystaulukko[8] = document.getElementById("s8");
+	kysymystaulukko[9] = document.getElementById("s9");
+	kysymystaulukko[10] = document.getElementById("s10");
+	
+	var otsikko = kysymystaulukko[luku].childNodes[1].innerHTML;
+	var vastaus1 = kysymystaulukko[luku].childNodes[3].innerHTML;
+	var vastaus2 = kysymystaulukko[luku].childNodes[5].innerHTML;
+	var vastaus3 = kysymystaulukko[luku].childNodes[7].innerHTML;
+	
+	var kysymys = [otsikko,vastaus1,vastaus2,vastaus3];
+	
+	return kysymys;
+ }
+ 
+ function satunnaisLuvut()
+ {
+	 var taulukko = [];
+	 var luku = Math.floor((Math.random() * 9) + 1);
+	 taulukko[0] = luku;
+	 var i = 1;
+	 while (taulukko.length < 11)
+	 {
+		 luku = Math.floor((Math.random() * 9) + 1);
+		 
+		 if (taulukko[i-1] == luku)
+		 {
+			 luku = Math.floor((Math.random() * 9) + 1);
+		 }
+		 
+		 else 
+		 {
+		 taulukko[i] = luku;
+		 i++;
+		 }
+	 }
+	 
+	 return taulukko;
 	 
  }
