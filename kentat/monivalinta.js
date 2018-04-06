@@ -85,6 +85,10 @@ laskuri = localStorage.getItem('laskuri');
  var vastaus2 = document.createElement("div");
  var vastaus3 = document.createElement("div");
  
+ var kuva = document.createElement("div");
+ kuva.setAttribute("style","background-image:url('../imgs/suomimappi.png')");
+ kuva.setAttribute("id","kysymyskuva");
+ 
  vastaus1.setAttribute("id","vastaus1");
  vastaus2.setAttribute("id","vastaus2");
  vastaus3.setAttribute("id","vastaus3");
@@ -107,6 +111,7 @@ laskuri = localStorage.getItem('laskuri');
  vastaustaulukko = randomoiVastaukset(vastaus1,vastaus2,vastaus3);
  
  //lisätään lapsielementit
+ kentta.appendChild(kuva);
  kentta.appendChild(otsikko);
  kentta.appendChild(vastaustaulukko[0]);
  kentta.appendChild(vastaustaulukko[1]);
