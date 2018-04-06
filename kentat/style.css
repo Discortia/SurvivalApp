@@ -1,0 +1,33 @@
+* {
+	box-sizing: border-box;
+}
+
+section {
+	font-family: Arial Black;
+	text-align: center;
+	background: MidnightBlue;
+	max-width: 400px;
+	width: 100%;
+	margin: 0 auto;
+	border: 3px white;
+    border-radius: 15px;	
+}
+
+section h1 {
+	color:;
+	background: white;
+    font-size:;
+	border: 3px solid black;
+	border-radius: 15px;
+}
+
+section div {
+	color:;
+	background: white;
+	font-size:;
+	padding: 10px;
+	border: 2px solid black;
+	border-radius: 15px;
+	margin-bottom: 3px;
+}
+
