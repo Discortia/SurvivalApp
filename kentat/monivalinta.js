@@ -47,10 +47,12 @@ function randomoiVastaukset(vastaus1,vastaus2,vastaus3) {
 
 var pisteet;
 var laskuri;
+var luvut;
 
 function naytaKysymys()  {
-	
-	
+	//localStorage.clear();
+	console.log(laskuri);
+
 if (localStorage.getItem('laskuri') == null || localStorage.getItem('laskuri') == 0)
 {
 	console.log('Laskuri: tyhjä');
@@ -60,8 +62,9 @@ if (localStorage.getItem('laskuri') == null || localStorage.getItem('laskuri') =
 
 else
 {
-	console.log('laskuri' + localStorage.getItem('laskuri'));
+	console.log('laskuri ' + localStorage.getItem('laskuri'));
 }
+
 
 if (localStorage.getItem('pisteet') == null || localStorage.getItem('pisteet') == 0)
 {
@@ -71,7 +74,7 @@ if (localStorage.getItem('pisteet') == null || localStorage.getItem('pisteet') =
 
 else
 {
-	console.log('pisteita' + localStorage.getItem('pisteet'));
+	console.log('pisteita ' + localStorage.getItem('pisteet'));
 }
 pisteet = localStorage.getItem('pisteet');
 laskuri = localStorage.getItem('laskuri');
@@ -80,27 +83,25 @@ laskuri = localStorage.getItem('laskuri');
  //luodaan näyttöä varten yhden kysymyksen html-rakenne
  var naytto = document.createElement("div");
  var kentta = document.createElement("section");
+ var kuva = document.createElement("div");
  var otsikko = document.createElement("h1");
  var vastaus1 = document.createElement("div");
  var vastaus2 = document.createElement("div");
  var vastaus3 = document.createElement("div");
  
- var kuva = document.createElement("div");
- kuva.setAttribute("style","background-image:url('../imgs/suomimappi.png')");
- kuva.setAttribute("id","kysymyskuva");
- 
+ kuva.setAttribute("id","kuva");
  vastaus1.setAttribute("id","vastaus1");
  vastaus2.setAttribute("id","vastaus2");
  vastaus3.setAttribute("id","vastaus3");
   
-  
- //kysymysjärjestyksen randomisointi 
- var luvut = satunnaisLuvut();
  
- console.log(luvut);
+if (luvut == null)
+{
+luvut = satunnaisLuvut();
+}
  
  var kysymys = kysymysData(luvut[laskuri]);
-  
+ kuva.innerHTML = document.getElementById("kuva").innerHTML;
  //sijoitetaan kysymyksen sisältö html-rakenteeseen, kysymysnumero satunnainen 
   otsikko.innerHTML = kysymys[0];
   vastaus1.innerHTML = kysymys[1];
@@ -123,7 +124,7 @@ laskuri = localStorage.getItem('laskuri');
  //vastaus1.onclick = function() {vastaus('vastaus1')};
  //vastaus2.onclick = function() {vastaus('vastaus2')};
  //vastaus3.onclick = function() {vastaus('vastaus3')};
- 
+
  
  document.getElementById("kysymysHolder").innerHTML = naytto.innerHTML;
  
@@ -131,16 +132,7 @@ laskuri = localStorage.getItem('laskuri');
  document.getElementById("vastaus2").addEventListener("click",function() {vastaus('vastaus2')});
  document.getElementById("vastaus3").addEventListener("click",function() {vastaus('vastaus3')});
  
- if (laskuri == 9)
- {
-	 alert('You got ' + pisteet + '/10 points');
-	 localStorage.setItem('pisteet',0);
-	 localStorage.setItem('laskuri',0);
- }
-  
-  
- 
- }
+}
  
  function vastaus(vaihtoehto)
  { 
@@ -159,6 +151,16 @@ laskuri = localStorage.getItem('laskuri');
 	{   laskuri++;
 		localStorage.setItem('laskuri', laskuri);
 		naytaKysymys();
+	}
+	
+	if (laskuri == 9)
+	{
+	var resultWin = window.open("", "MsgWindow", "width=200,height=100");
+	resultWin.document.write('<div id ="result">You got ' + pisteet + '/10 points </div>');
+	localStorage.clear();
+	laskuri = 0;
+	pisteet = 0;
+	luvut = satunnaisLuvut();
 	}
 	 
 	 
@@ -180,10 +182,10 @@ laskuri = localStorage.getItem('laskuri');
 	kysymystaulukko[9] = document.getElementById("s9");
 
 	console.log(luku);
-	var otsikko = kysymystaulukko[luku].childNodes[1].innerHTML;
-	var vastaus1 = kysymystaulukko[luku].childNodes[3].innerHTML;
-	var vastaus2 = kysymystaulukko[luku].childNodes[5].innerHTML;
-	var vastaus3 = kysymystaulukko[luku].childNodes[7].innerHTML;
+	var otsikko = kysymystaulukko[luku].childNodes[3].innerHTML;
+	var vastaus1 = kysymystaulukko[luku].childNodes[5].innerHTML;
+	var vastaus2 = kysymystaulukko[luku].childNodes[7].innerHTML;
+	var vastaus3 = kysymystaulukko[luku].childNodes[9].innerHTML;
 	
 	var kysymys = [otsikko,vastaus1,vastaus2,vastaus3];
 	
