@@ -50,3 +50,16 @@ display : none;
 	display: table-cell;
 
 }
+
+#points {
+	background: white;
+	padding: 10px;
+	border: 1px solid #1fa5a6;
+	border-radius: 15px;
+	margin-bottom: 3px;
+	box-shadow: 2px -1px 6px 2px #86868699 inset;
+	width: 200px;
+	font-family: Verdana;
+	text-align: center;
+	
+}

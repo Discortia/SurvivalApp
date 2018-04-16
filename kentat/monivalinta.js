@@ -173,15 +173,16 @@ luvut = satunnaisLuvut();
 	result.setAttribute("id","result");
 	kentta.setAttribute("id","kentta");
 	kartta.setAttribute("id","kartta");
+	points.setAttribute("id","points");
 	points.innerHTML = 'You got ' + pisteet + '/10 points';
 	kentta.innerHTML = '<img src = "../imgs/alieni.png">';
 	kartta.innerHTML = '<img src = "../imgs/alieni.png">';
-	
-	
+
+	points.appendChild(kentta);
+	points.appendChild(kartta);
 
 	result.appendChild(points);
-	result.appendChild(kentta);
-	result.appendChild(kartta);
+
 	document.getElementById("kysymysHolder").innerHTML = result.innerHTML;
 	localStorage.clear();
 	laskuri = 0;
