@@ -153,10 +153,22 @@ luvut = satunnaisLuvut();
 		naytaKysymys();
 	}
 	
-	if (laskuri == 9)
+	if (laskuri == 1)
 	{
-	var resultWin = window.open("", "MsgWindow", "width=200,height=100");
-	resultWin.document.write('<div id ="result">You got ' + pisteet + '/10 points </div>');
+	
+	var result = document.createElement("div");
+	var points = document.createElement("div");
+	var nappi = document.createElement("div");
+	nappi.setAttribute("id","nappi");
+	points.innerHTML = 'You got ' + pisteet + '/10 points';
+	nappi.innerHTML = '<img src = "../imgs/alieni.png">';
+	
+
+	nappi.addEventListener("click",function() {lataaKentta('../index.html')});
+	
+	result.appendChild(points);
+	result.appendChild(nappi);
+	document.getElementById("kysymysHolder").innerHTML = result.innerHTML;
 	localStorage.clear();
 	laskuri = 0;
 	pisteet = 0;
@@ -165,6 +177,12 @@ luvut = satunnaisLuvut();
 	 
 	 
  }
+ 
+ function lataaKentta(osoite)
+{
+window.location = osoite;
+return false;
+}
  
  function kysymysData(luku)
  {
