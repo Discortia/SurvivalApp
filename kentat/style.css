@@ -35,11 +35,18 @@ section div {
 
 }
 
-#result {
-	background: blue;
-}
-
 
 #kysymykset {
 display : none;
+}
+
+#kentta {
+	width: 100px;
+	display: table-cell;
+}
+
+#kartta {
+	width: 100px;
+	display: table-cell;
+
 }

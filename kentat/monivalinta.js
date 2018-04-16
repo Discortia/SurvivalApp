@@ -50,6 +50,7 @@ var laskuri;
 var luvut;
 
 function naytaKysymys()  {
+	
 	//localStorage.clear();
 	console.log(laskuri);
 
@@ -79,7 +80,6 @@ else
 pisteet = localStorage.getItem('pisteet');
 laskuri = localStorage.getItem('laskuri');
 
- console.log('ajo');
  //luodaan näyttöä varten yhden kysymyksen html-rakenne
  var naytto = document.createElement("div");
  var kentta = document.createElement("section");
@@ -100,7 +100,16 @@ if (luvut == null)
 luvut = satunnaisLuvut();
 }
  
+  if (laskuri == 10)  //surkea palikkaratkaisu joka estää virheen tapahtumisen laskurin noustessa yli 9
+ {
+	 var kysymys = kysymysData(luvut[laskuri-1]);
+ }
+ else
+ {
  var kysymys = kysymysData(luvut[laskuri]);
+ }
+ 
+
  kuva.innerHTML = document.getElementById("kuva").innerHTML;
  //sijoitetaan kysymyksen sisältö html-rakenteeseen, kysymysnumero satunnainen 
   otsikko.innerHTML = kysymys[0];
@@ -153,27 +162,36 @@ luvut = satunnaisLuvut();
 		naytaKysymys();
 	}
 	
-	if (laskuri == 1)
+	if (laskuri == 10) //tulosikkunan rakentaminen ja tuloksen näyttäminen
 	{
 	
 	var result = document.createElement("div");
 	var points = document.createElement("div");
-	var nappi = document.createElement("div");
-	nappi.setAttribute("id","nappi");
+	var kentta = document.createElement("div");
+	var kartta = document.createElement("div");
+
+	result.setAttribute("id","result");
+	kentta.setAttribute("id","kentta");
+	kartta.setAttribute("id","kartta");
 	points.innerHTML = 'You got ' + pisteet + '/10 points';
-	nappi.innerHTML = '<img src = "../imgs/alieni.png">';
+	kentta.innerHTML = '<img src = "../imgs/alieni.png">';
+	kartta.innerHTML = '<img src = "../imgs/alieni.png">';
+	
 	
 
-	nappi.addEventListener("click",function() {lataaKentta('../index.html')});
-	
 	result.appendChild(points);
-	result.appendChild(nappi);
+	result.appendChild(kentta);
+	result.appendChild(kartta);
 	document.getElementById("kysymysHolder").innerHTML = result.innerHTML;
 	localStorage.clear();
 	laskuri = 0;
 	pisteet = 0;
 	luvut = satunnaisLuvut();
+	
+	document.getElementById("kentta").addEventListener("click",function() {lataaKentta(window.location)});
+	document.getElementById("kartta").addEventListener("click",function() {lataaKentta('../index.html')});
 	}
+	
 	 
 	 
  }
@@ -189,15 +207,16 @@ return false;
 		var kysymystaulukko = new Array();
 		//lisätään kaikki kysymykset taulukkoon
 	kysymystaulukko[0] = document.getElementById("s0");
-	kysymystaulukko[1] = document.getElementById("s1");
-	kysymystaulukko[2] = document.getElementById("s2");
-	kysymystaulukko[3] = document.getElementById("s3");
-	kysymystaulukko[4] = document.getElementById("s4");
-	kysymystaulukko[5] = document.getElementById("s5");
-	kysymystaulukko[6] = document.getElementById("s6");
-	kysymystaulukko[7] = document.getElementById("s7");
-	kysymystaulukko[8] = document.getElementById("s8");
-	kysymystaulukko[9] = document.getElementById("s9");
+	kysymystaulukko[1] = document.getElementById("s0");
+	kysymystaulukko[2] = document.getElementById("s1");
+	kysymystaulukko[3] = document.getElementById("s2");
+	kysymystaulukko[4] = document.getElementById("s3");
+	kysymystaulukko[5] = document.getElementById("s4");
+	kysymystaulukko[6] = document.getElementById("s5");
+	kysymystaulukko[7] = document.getElementById("s6");
+	kysymystaulukko[8] = document.getElementById("s7");
+	kysymystaulukko[9] = document.getElementById("s8");
+	kysymystaulukko[10] = document.getElementById("s9");
 
 	console.log(luku);
 	var otsikko = kysymystaulukko[luku].childNodes[3].innerHTML;
