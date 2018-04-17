@@ -52,31 +52,21 @@ var luvut;
 function naytaKysymys()  {
 	
 	//localStorage.clear();
-	console.log(laskuri);
 
 if (localStorage.getItem('laskuri') == null || localStorage.getItem('laskuri') == 0)
 {
-	console.log('Laskuri: tyhjä');
+
 	localStorage.setItem('laskuri',0);
 	
-}
-
-else
-{
-	console.log('laskuri ' + localStorage.getItem('laskuri'));
 }
 
 
 if (localStorage.getItem('pisteet') == null || localStorage.getItem('pisteet') == 0)
 {
-	console.log('Pisteet: tyhja');
+
 	localStorage.setItem('pisteet',0);
 }
 
-else
-{
-	console.log('pisteita ' + localStorage.getItem('pisteet'));
-}
 pisteet = localStorage.getItem('pisteet');
 laskuri = localStorage.getItem('laskuri');
 
@@ -109,7 +99,7 @@ luvut = satunnaisLuvut();
  var kysymys = kysymysData(luvut[laskuri]);
  }
  
-
+console.log(luvut[laskuri]);
  kuva.innerHTML = document.getElementById("kuva").innerHTML;
  //sijoitetaan kysymyksen sisältö html-rakenteeseen, kysymysnumero satunnainen 
   otsikko.innerHTML = kysymys[0];
@@ -208,15 +198,15 @@ return false;
 		var kysymystaulukko = new Array();
 		//lisätään kaikki kysymykset taulukkoon
 	kysymystaulukko[0] = document.getElementById("s0");
-	kysymystaulukko[1] = document.getElementById("s0");
-	kysymystaulukko[2] = document.getElementById("s1");
-	kysymystaulukko[3] = document.getElementById("s2");
-	kysymystaulukko[4] = document.getElementById("s3");
-	kysymystaulukko[5] = document.getElementById("s4");
-	kysymystaulukko[6] = document.getElementById("s5");
-	kysymystaulukko[7] = document.getElementById("s6");
-	kysymystaulukko[8] = document.getElementById("s7");
-	kysymystaulukko[9] = document.getElementById("s8");
+	kysymystaulukko[1] = document.getElementById("s1");
+	kysymystaulukko[2] = document.getElementById("s2");
+	kysymystaulukko[3] = document.getElementById("s3");
+	kysymystaulukko[4] = document.getElementById("s4");
+	kysymystaulukko[5] = document.getElementById("s5");
+	kysymystaulukko[6] = document.getElementById("s6");
+	kysymystaulukko[7] = document.getElementById("s7");
+	kysymystaulukko[8] = document.getElementById("s8");
+	kysymystaulukko[9] = document.getElementById("s9");
 	kysymystaulukko[10] = document.getElementById("s9");
 
 	console.log(luku);
