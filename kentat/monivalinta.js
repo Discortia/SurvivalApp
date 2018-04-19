@@ -154,6 +154,27 @@ console.log(luvut[laskuri]);
 	
 	if (laskuri == 10) //tulosikkunan rakentaminen ja tuloksen näyttäminen
 	{
+		var msg;
+		
+		if (pisteet == 0)
+		{
+			msg = 'Try again maybe?';
+		}
+		
+		else if (pisteet < 5 && pisteet > 0)
+		{
+			msg = 'Practice some more!';
+		}
+		
+		else if (pisteet < 10 && pisteet > 4)
+		{
+			msg = 'Good!';
+		}
+		
+		else
+		{
+			msg = 'Perfect score! You rock!';
+		}
 	
 	var result = document.createElement("div");
 	var points = document.createElement("div");
@@ -164,9 +185,9 @@ console.log(luvut[laskuri]);
 	kentta.setAttribute("id","kentta");
 	kartta.setAttribute("id","kartta");
 	points.setAttribute("id","points");
-	points.innerHTML = 'You got ' + pisteet + '/10 points';
-	kentta.innerHTML = '<img src = "../imgs/alieni.png">';
-	kartta.innerHTML = '<img src = "../imgs/alieni.png">';
+	points.innerHTML = 'You got ' + pisteet + '/10 points. ' + msg;
+	kentta.innerHTML = '<img src = "../imgs/reset.png">';
+	kartta.innerHTML = '<img src = "../imgs/back.png">';
 
 	points.appendChild(kentta);
 	points.appendChild(kartta);

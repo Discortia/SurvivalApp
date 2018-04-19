@@ -8,7 +8,7 @@ section {
 	background: MidnightBlue;
 	max-width: 400px;
 	width: 100%;
-	margin: 0 auto;
+
 	border: 3px white;
 	padding: 1px 2px 1px 2px;
 }
@@ -31,9 +31,6 @@ section div {
 	box-shadow: 2px -1px 6px 2px #86868699 inset;
 }
 
-#kuva { 
-
-}
 
 
 #kysymykset {
@@ -43,11 +40,17 @@ display : none;
 #kentta {
 	width: 100px;
 	display: table-cell;
+	position: relative;
+	left: 25px;
+	top: 20px;
 }
 
 #kartta {
 	width: 100px;
 	display: table-cell;
+	position: relative;
+	left: 110px;
+	top: 20px;
 
 }
 
@@ -58,7 +61,8 @@ display : none;
 	border-radius: 15px;
 	margin-bottom: 3px;
 	box-shadow: 2px -1px 6px 2px #86868699 inset;
-	width: 200px;
+	width: 400px;
+	height: 150px;
 	font-family: Verdana;
 	text-align: center;
 	
